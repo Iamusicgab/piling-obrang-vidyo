@@ -8,7 +8,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 	AccordionContent,
-} from "../components/ui/accordion";
+} from "@/components/ui/accordion";
 ---
 
 <html lang="en">
@@ -215,34 +215,33 @@ import {
 				</ul>
 			</div>
 			<div>
-				<Accordion>
-					<AccordionItem>
-						<AccordionTrigger>Submission Guidelines</AccordionTrigger>
+				<Accordion
+					type="single"
+					collapsible
+					defaultValue="shipping"
+					className="max-w-lg"
+				>
+					<AccordionItem value="shipping">
+						<AccordionTrigger>What are your shipping options?</AccordionTrigger>
 						<AccordionContent>
-							<p class="pl-4 mt-2 text-gray-200">
-								Please ensure that your submission adheres to the following
-								guidelines:
-							</p>
-							<ul class="list-disc list-inside pl-6 mt-2 space-y-1">
-								<li>All films must be original works.</li>
-								<li>
-									Submissions must be in English or have English subtitles.
-								</li>
-								<li>Films should not exceed 15 minutes in length.</li>
-							</ul>
+							We offer standard (5-7 days), express (2-3 days), and overnight
+							shipping. Free shipping on international orders.
 						</AccordionContent>
 					</AccordionItem>
-					<AccordionItem>
-						<AccordionTrigger>Technical Requirements</AccordionTrigger>
+					<AccordionItem value="returns">
+						<AccordionTrigger>What is your return policy?</AccordionTrigger>
 						<AccordionContent>
-							<p class="pl-4 mt-2 text-gray-200">
-								All submissions must meet the following technical requirements:
-							</p>
-							<ul class="list-disc list-inside pl-6 mt-2 space-y-1">
-								<li>Video format: MP4</li>
-								<li>Resolution: 1920x1080</li>
-								<li>Frame rate: 24fps</li>
-							</ul>
+							Returns accepted within 30 days. Items must be unused and in
+							original packaging. Refunds processed within 5-7 business days.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="support">
+						<AccordionTrigger
+							>How can I contact customer support?</AccordionTrigger
+						>
+						<AccordionContent>
+							Reach us via email, live chat, or phone. We respond within 24
+							hours during business days.
 						</AccordionContent>
 					</AccordionItem>
 				</Accordion>
