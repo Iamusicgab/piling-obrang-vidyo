@@ -1,5 +1,10 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Button from "../components/Button.astro";
+import NewsTab from "../components/NewsTab.astro";
+import Pov22News from "../components/Pov22News.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -9,9 +14,82 @@ import "../styles/global.css";
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Piling Obrang Vidyo</title>
 	</head>
-	<body class="bg-black text-white font-stack">
-		<h1 class="text-4xl font-bold">Astro</h1>
+	<body class="bg-black text-white font-stack max-w-360 mx-auto">
+		<Navbar />
+		<div class="m-6 flex flex-col gap-8">
+			<section class="relative flex justify-center">
+				<video
+					class="w-full h-auto aspect-video rounded-xl relative z-0"
+					autoplay
+					loop
+					muted
+					playsinline
+				>
+					<source src="/trailer.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<div
+					class="absolute inset-0 bg-black/50 rounded-xl z-10 pointer-events-none m-auto"
+				>
+				</div>
+				<h1 class="absolute inset-0 flex items-center justify-center z-20">
+					<div class="flex flex-col items-center text-center px-4">
+						<span class="text-4xl">Piling Obrang Vidyo</span>
+						<span class="text-base">
+							is an annual interschool film festival by <span class="text-red"
+								>UP Cinema.</span
+							>
+						</span>
+					</div>
+				</h1>
+			</section>
+			<!-- NEWS SECTION -->
+			<section>
+				<div class="flex items-center gap-3">
+					<span class="text-2xl">News</span>
+					<Button url="/news" text="See All" />
+				</div>
+				<div>
+					<div
+						class="grid md:flex-row gap-6 mt-4 justify-center sm:grid-cols-2 md:grid-cols-3"
+					>
+						<Pov22News />
+						<NewsTab
+							text="Piling Obrang Vidyo 2024 Winners Announced! 2024 Winners Announced!2024 Winners Announced!"
+						/>
+						<NewsTab
+							text="Piling Obrang Vidyo 2024 Winners Announced! 2024 Winners Announced!2024 Winners Announced!"
+						/>
+					</div>
+				</div>
+			</section>
+			<!-- SHORT ABOUT -->
+			<section>
+				<div
+					class="bg-[url('/group.webp')] w-full bg-size-[120%] bg-bottom rounded-lg max-w-4xl p-5 flex flex-col justify-end gap-2 mx-auto relative overflow-hidden"
+				>
+					<!-- dark overlay -->
+					<div
+						class="absolute inset-0 bg-black/70 rounded-lg z-0 pointer-events-none"
+					>
+					</div>
+					<div class="relative z-10 flex flex-col justify-end gap-2 h-full">
+						<p class="md:mt-24">
+							Since 2004, POV has been home for a lot of student filmmakers to
+							declare and claim their voice and space in the field of
+							audio-visual storytelling. Apart from exhibiting their films on
+							the big screen, the works of the finalists would be critiqued and
+							awarded by a roster of esteemed individuals in the Philippine film
+							industry.
+						</p>
+						<Button url="/about" text="Learn More" />
+					</div>
+				</div>
+			</section>
+			<!-- FOOTER -->
+			<Footer />
+		</div>
 	</body>
 </html>

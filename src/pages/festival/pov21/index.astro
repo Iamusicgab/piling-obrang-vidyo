@@ -1,0 +1,48 @@
+---
+import "../../../styles/global.css";
+import Navbar from "../../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import ShortFilms from "../../../components/ShortFilms.astro";
+
+// load all markdown film entries for this festival
+const films = await Astro.glob("./films/*.md");
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>About | Piling Obrang Vidyo</title>
+	</head>
+	<body class="bg-black text-white font-stack max-w-360 mx-auto">
+		<Navbar />
+		<div class="m-6 flex flex-col gap-8">
+			<section class="flex flex-col gap-4">
+				<div class="flex flex-col items-center gap-4">
+					<img src="/pov21.jpg" class="rounded-lg w-full max-w-md mx-auto" />
+					<h1 class="text-2xl">POV 21: Pakinggan ang Puso</h1>
+				</div>
+				<div class="">
+					<span class="text-lg">Short Films</span>
+					<div
+						class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 mx-auto"
+					>
+						{
+							films.map((film: any) => (
+								<ShortFilms
+									image={film.frontmatter.stills[0]}
+									film={film.frontmatter.title}
+									link={film.url}
+								/>
+							))
+						}
+					</div>
+				</div>
+			</section>
+			<Footer />
+		</div>
+	</body>
+</html>

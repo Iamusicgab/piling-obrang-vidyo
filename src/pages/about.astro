@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>About | Piling Obrang Vidyo</title>
+	</head>
+	<body class="bg-black text-white font-stack max-w-360 mx-auto">
+		<Navbar />
+		<div class="m-6 flex flex-col gap-8">
+			<section class="flex flex-col gap-4">
+				<h1 class="text-2xl">About</h1>
+				<img src="/group.webp" class="rounded-lg w-full max-w-3xl mx-auto" />
+				<p></p>
+				Piling Obrang Vidyo is an event organized by the members of UP Cinema.
+				<br /><br />Since 2004, POV has been home for a lot of student
+				filmmakers to declare and claim their voice and space in the field of
+				audio-visual storytelling. Apart from exhibiting their films on the big
+				screen, the works of the finalists would be critiqued and awarded by a
+				roster of esteemed individuals in the Philippine film industry.<br /><br
+				/>For its 19th year, POV is now bigger than ever as it turns into a
+				hybrid event. With the easing of pandemic-related restrictions, POV XIX
+				is bringing the annual film festival competition back home, at UPFI Film
+				Center's Cine Adarna. Along with the onground screening, POV XIX will
+				also stream the finalist short films online for free. For the first time
+				ever, POV will also be opening its doors not only to college students,
+				but also to senior high school students to further amplify the voice of
+				the youth. Bringing back the genres of narrative, experimental, and
+				documentary, POV XIX hopes to widen the people's appreciation for
+				different kinds of filmmaking.
+			</section>
+			<Footer />
+		</div>
+	</body>
+</html>

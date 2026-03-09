@@ -1,0 +1,153 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+const { frontmatter } = Astro.props;
+
+// --- 1. YouTube Trailer Transformation ---
+let embedUrl = frontmatter.trailer_url;
+
+if (embedUrl) {
+	if (embedUrl.includes("watch?v=")) {
+		const urlObj = new URL(embedUrl);
+		const videoId = urlObj.searchParams.get("v");
+		embedUrl = `https://www.youtube.com/embed/${videoId}`;
+	} else if (embedUrl.includes("youtu.be/")) {
+		const urlObj = new URL(embedUrl);
+		const videoId = urlObj.pathname.substring(1);
+		embedUrl = `https://www.youtube.com/embed/${videoId}`;
+	}
+}
+
+// --- 2. Google Drive Stills Transformation ---
+const transformDriveLink = (url: string) => {
+	if (!url) return url;
+
+	// Grabs the unique ID right after the "/d/"
+	const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+
+	if (match && match[1]) {
+		// USING THE THUMBNAIL API TRICK:
+		// sz=w1000 sets the max width to 1000px so it stays high quality
+		return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+	}
+
+	return url;
+};
+
+// Transform the stills array
+const formattedStills = frontmatter.stills
+	? frontmatter.stills.map(transformDriveLink)
+	: [];
+
+// Optional: You can also use this for the poster and filmmaker photo if they are Drive links!
+const posterImage = transformDriveLink(frontmatter.poster_image);
+const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{frontmatter.title} | Piling Obrang Vidyo</title>
+	</head>
+	<body class="bg-black text-white font-stack max-w-360 mx-auto">
+		<Navbar />
+
+		<div class="m-6 flex flex-col gap-8">
+			<iframe
+				class="w-full aspect-video rounded-lg max-w-4xl mx-auto"
+				src={embedUrl}
+				title="Trailer"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen></iframe>
+
+			<div class="flex gap-4 mx-auto flex-col md:flex-row">
+				<img
+					src={posterImage}
+					class="rounded-lg w-full max-w-72 mx-auto"
+					alt={`${frontmatter.title} Poster`}
+				/>
+				<div class="flex flex-col gap-4">
+					<div>
+						<p class="text-2xl">{frontmatter.title}</p>
+						<p>
+							by {frontmatter.director} | {frontmatter.school}
+						</p>
+					</div>
+					{
+						() => {
+							if (frontmatter.award) {
+								return <p class="text-yellow font-bold">{frontmatter.award}</p>;
+							}
+						}
+					}
+					<p>
+						{frontmatter.runtime} • {
+							frontmatter.genre.map((g: any) => {
+								return <span>{g} </span>;
+							})
+						}
+					</p>
+					<p>
+						Logline: {frontmatter.logline}
+					</p>
+					<p>
+						Synopsis: {frontmatter.synopsis}
+					</p>
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-4">
+				<h1 class="text-2xl">Stills</h1>
+				<div
+					class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full max-w-4xl"
+				>
+					{
+						formattedStills.map((stillUrl: string) => (
+							<img
+								src={stillUrl}
+								class="rounded-lg w-full h-auto object-cover aspect-video"
+								alt={`Still from ${frontmatter.title}`}
+								loading="lazy"
+							/>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-4">
+				<h1 class="text-2xl">Filmmaker's Profile</h1>
+				<div
+					class="flex flex-col md:flex-row gap-3 items-center md:items-start"
+				>
+					<img
+						src={frontmatter.filmmaker.photo == ""
+							? "/bg.png"
+							: frontmatter.filmmaker.photo}
+						class="rounded-lg w-full max-w-72 object-cover aspect-square"
+						alt={`Photo of ${frontmatter.filmmaker.name}`}
+					/>
+					<div class="flex flex-col gap-3">
+						<p class="text-2xl">{frontmatter.filmmaker.name}</p>
+						<p>
+							{frontmatter.filmmaker.bio}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col gap-4">
+				<h1 class="text-2xl">Crew</h1>
+				<p class="whitespace-pre-wrap">
+					{frontmatter.crew}
+				</p>
+			</div>
+			<Footer />
+		</div>
+	</body>
+</html>

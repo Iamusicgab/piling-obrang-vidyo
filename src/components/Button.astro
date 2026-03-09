@@ -1,0 +1,10 @@
+---
+const { url, text } = Astro.props;
+---
+
+<a href={url} class="self-start inline-block">
+	<span
+		class="bg-red text-white p-2 rounded-sm transition hover:bg-white hover:text-black active:bg-black active:text-white inline-block max-w-full"
+		>{text}</span
+	>
+</a>

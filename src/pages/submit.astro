@@ -1,0 +1,253 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ButtonWhite from "../components/ButtonWhite.astro";
+import {
+	Accordion,
+	AccordionItem,
+	AccordionTrigger,
+	AccordionContent,
+} from "../components/ui/accordion";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>POV22 Submissions | Piling Obrang Vidyo</title>
+	</head>
+	<body class="bg-black text-white font-stack max-w-360 mx-auto">
+		<Navbar />
+		<div class="m-6 flex flex-col gap-8">
+			<div class="flex flex-col gap-4 group">
+				<h1 class="text-3xl">POV XXII Submissions</h1>
+				<div class="grid md:grid-cols-2 gap-4">
+					<div
+						class="relative bg-purple text-white w-fit p-4 rounded-lg flex flex-col gap-2 justify-between"
+					>
+						<div>
+							<h1 class="text-2xl mb-6">High School Category</h1>
+							<p>Deadline: March 21, 2026</p>
+							<p>
+								We are launching a post-production lab for high school
+								filmmakers. We are accepting entries from emerging high school
+								filmmakers to support them in developing their films.
+							</p>
+						</div>
+						<div>
+							<ButtonWhite url="/submit/highschool" text="Submit here" />
+							<ButtonWhite url="/submit/highschool" text="Guidelines" />
+						</div>
+					</div>
+					<div
+						class="relative bg-orange text-white w-fit p-4 rounded-lg flex flex-col gap-2 justify-center"
+					>
+						<h1 class="text-2xl mb-6">Collegiate Category</h1>
+						<p>Regular Deadline: March 30, 2026</p>
+						<p>
+							We are accepting film submissions from undergraduate student
+							filmmakers across the Philippines. The Collegiate Category
+							highlights works created within universities and colleges,
+							providing a platform for student filmmakers to showcase their
+							stories and perspectives to a wider audience.
+						</p>
+						<div>
+							<ButtonWhite url="/submit/collegiate" text="Submit here" />
+							<ButtonWhite url="/submit/collegiate" text="Guidelines" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-6">
+				<h1 class="bg-purple text-white text-3xl p-4 uppercase rounded-lg">
+					High School Category Guidelines
+				</h1>
+				<ul class="space-y-6">
+					<li>
+						<strong class="text-xl font-normal">Eligibility</strong>
+						<ol
+							class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+						>
+							<li>
+								The festival is open to current Junior or Senior High School
+								students from any school / institution in the Philippines within
+								the application period.
+							</li>
+							<li>
+								Films of varying styles and forms are accepted: Narrative,
+								Documentary, Experimental, Animation, etc.
+							</li>
+							<li>
+								Film entries must have had its principal photography / shooting
+								within the period of August 2025 to March 2026.
+							</li>
+							<li>
+								The project should be a short film (maximum of 20 minutes) and
+								must be in the post-production phase.
+							</li>
+							<li>
+								External collaborators are allowed, provided that the majority
+								of the team are currently enrolled in the same high school.
+								There is no limit to the number of cast and crew members
+								involved.
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<strong class="text-xl font-normal">Submissions</strong>
+						<ol
+							class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+						>
+							<li>
+								The application must be submitted through a Google Form. Only
+								one (1) member of the team, either the director or the producer,
+								should complete the form on behalf of the group.
+							</li>
+							<li>
+								There will be a PHP 100 submission fee. Payment instructions
+								will be provided in the application form.
+							</li>
+							<li>
+								Please compile the following requirements:
+								<ul class="list-disc list-inside pl-6 mt-2 space-y-1">
+									<li>Logline (1-2 sentences description)</li>
+									<li>Synopsis (500 max words summarizing the film)</li>
+									<li>
+										Director’s Statement (500 max words answering the following:
+										What is the connection of this film to your personal
+										narrative? Why should you direct it? What is the importance
+										of this film?)
+									</li>
+									<li>
+										Rough Cut / Draft of the film (a work-in-progress cut)
+									</li>
+									<li>
+										Parental Consent Form (for participants under 18, provide
+										separate forms for each member)
+									</li>
+									<li>
+										School ID/Proof of Enrollment of Members (compiled in one
+										PDF)
+									</li>
+									<li>Script/Outline (only if applicable/available)</li>
+								</ul>
+							</li>
+							<li>
+								UP Cinema will not be responsible for any legal complaints as a
+								result of the filmmaker’s use of music and other copyrighted
+								materials on the works-in-progress. The organization will also
+								not be liable for untoward incidents that may occur during the
+								production of the film.
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<strong class="text-xl font-normal">Selection</strong>
+						<ol
+							class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+						>
+							<li>
+								A selection committee composed of members of UP Cinema will
+								choose the participants.
+							</li>
+							<li>
+								There shall be five (5) selected films. However, the selection
+								committee reserves the right to accept more than five films at
+								their prerogative.
+							</li>
+							<li>The decision of the selection committee is final.</li>
+						</ol>
+					</li>
+
+					<li>
+						<strong class="text-xl font-normal">Post-production Lab</strong>
+						<ol
+							class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+						>
+							<li>
+								Selected participants are expected to attend scheduled
+								mentorship sessions and submit revised cuts based on feedback
+								throughout the lab. Each project may have up to five (5)
+								participants in the post-production lab, including the
+								representative.
+							</li>
+							<li>
+								Editing mentors will be assigned to guide them throughout their
+								post-production process. The organizers will create a group chat
+								with the team and their mentors.
+							</li>
+							<li>
+								They will have the privilege to attend one-on-one consultations
+								with the editing mentors. Participants may also attend
+								additional workshops by invited filmmakers, as well as critique
+								sessions with a pool of Cinemasters.
+							</li>
+							<li>
+								Filmmakers will be notified of other deadlines and additional
+								requirements upon selection.
+							</li>
+							<li>
+								The entire post-production lab will be held from March to April
+								2026.
+							</li>
+							<li>
+								The selected films will be part of the official lineup and will
+								premiere at POV XXII: Kalampag ng Kulay from May 4–9, 2026. All
+								high school entries will be in competition.
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<strong class="text-xl font-normal">Deadline</strong>
+						<p class="pl-4 mt-2 text-gray-200">
+							The deadline for submission of entries is on March 21, 2026 -
+							11:59 PM.
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<Accordion>
+					<AccordionItem>
+						<AccordionTrigger>Submission Guidelines</AccordionTrigger>
+						<AccordionContent>
+							<p class="pl-4 mt-2 text-gray-200">
+								Please ensure that your submission adheres to the following
+								guidelines:
+							</p>
+							<ul class="list-disc list-inside pl-6 mt-2 space-y-1">
+								<li>All films must be original works.</li>
+								<li>
+									Submissions must be in English or have English subtitles.
+								</li>
+								<li>Films should not exceed 15 minutes in length.</li>
+							</ul>
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem>
+						<AccordionTrigger>Technical Requirements</AccordionTrigger>
+						<AccordionContent>
+							<p class="pl-4 mt-2 text-gray-200">
+								All submissions must meet the following technical requirements:
+							</p>
+							<ul class="list-disc list-inside pl-6 mt-2 space-y-1">
+								<li>Video format: MP4</li>
+								<li>Resolution: 1920x1080</li>
+								<li>Frame rate: 24fps</li>
+							</ul>
+						</AccordionContent>
+					</AccordionItem>
+				</Accordion>
+			</div>
+			<Footer />
+		</div>
+	</body>
+</html>

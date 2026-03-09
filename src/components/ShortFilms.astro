@@ -1,0 +1,20 @@
+---
+const { image, film, link } = Astro.props;
+---
+
+<a href={link}>
+	<div
+		class="w-full aspect-video rounded-lg bg-cover bg-center flex items-end p-4 relative overflow-hidden"
+		style={`background-image: url(${image});`}
+	>
+		<!-- gradient overlay -->
+		<div
+			class="absolute inset-0 bg-black/70 rounded-lg z-10 pointer-events-none m-auto"
+		>
+		</div>
+
+		<p class="relative z-10 text-white text-shadow-lg line-clamp-2">
+			{film}
+		</p>
+	</div>
+</a>
