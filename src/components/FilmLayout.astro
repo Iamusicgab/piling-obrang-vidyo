@@ -4,18 +4,35 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 const { frontmatter } = Astro.props;
 
-// --- 1. YouTube Trailer Transformation ---
-let embedUrl = frontmatter.trailer_url;
+// --- 1. Trailer (YouTube or Facebook) Transformation ---
+let embedUrl = frontmatter.trailer_url ?? "";
 
 if (embedUrl) {
-	if (embedUrl.includes("watch?v=")) {
-		const urlObj = new URL(embedUrl);
-		const videoId = urlObj.searchParams.get("v");
-		embedUrl = `https://www.youtube.com/embed/${videoId}`;
-	} else if (embedUrl.includes("youtu.be/")) {
-		const urlObj = new URL(embedUrl);
-		const videoId = urlObj.pathname.substring(1);
-		embedUrl = `https://www.youtube.com/embed/${videoId}`;
+	try {
+		const normalized = embedUrl.trim();
+		// YouTube handling
+		if (normalized.includes("youtube.com") || normalized.includes("youtu.be")) {
+			if (normalized.includes("watch?v=")) {
+				const urlObj = new URL(normalized);
+				const videoId = urlObj.searchParams.get("v");
+				embedUrl = `https://www.youtube.com/embed/${videoId}`;
+			} else if (normalized.includes("youtu.be/")) {
+				const urlObj = new URL(normalized);
+				const videoId = urlObj.pathname.substring(1);
+				embedUrl = `https://www.youtube.com/embed/${videoId}`;
+			}
+			// Facebook handling: accept e.g. https://www.facebook.com/watch/?v=868346158472787 or /videos/ID/
+		} else if (
+			normalized.includes("facebook.com") ||
+			normalized.includes("fb.watch")
+		) {
+			let videoHref = normalized;
+			if (!videoHref.startsWith("http")) videoHref = "https://" + videoHref;
+			// Build the Facebook plugin src using the original video URL as the href param
+			embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoHref)}&show_text=false&width=560`;
+		}
+	} catch (err) {
+		// parsing failed -> leave embedUrl as provided; browser may still handle it
 	}
 }
 
