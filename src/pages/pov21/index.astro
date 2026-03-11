@@ -1,7 +1,5 @@
 ---
-import "../../styles/global.css";
-import Navbar from "../../components/Navbar.astro";
-import Footer from "../../components/Footer.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import ShortFilms from "../../components/ShortFilms.astro";
 
 const { frontmatter } = Astro.props;
@@ -63,17 +61,8 @@ const transformDriveLink = (url: string) => {
 };
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="/povwhite.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>POV XXI | Piling Obrang Vidyo</title>
-	</head>
-	<body class="bg-maroon text-white font-stack max-w-360 mx-auto">
-		<Navbar />
-		<div class="m-6 flex flex-col gap-8">
+<BaseLayout title="POV XXI | Piling Obrang Vidyo">
+	<div class="m-6 flex flex-col gap-8">
 			<section class="flex flex-col gap-4">
 				<div class="flex flex-col items-center gap-4">
 					<iframe
@@ -101,8 +90,6 @@ const transformDriveLink = (url: string) => {
 						}
 					</div>
 				</div>
-			</section>
-			<Footer />
-		</div>
-	</body>
-</html>
+		</section>
+	</div>
+</BaseLayout>

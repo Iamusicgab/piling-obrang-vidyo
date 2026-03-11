@@ -1,7 +1,5 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const teamRoles = [
 	{
 		role: "POV Festival Director",
@@ -73,18 +71,9 @@ const teamRoles = [
 ];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="/povwhite.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>About | Piling Obrang Vidyo</title>
-	</head>
-	<body class="bg-black text-white font-stack max-w-360 mx-auto">
-		<Navbar />
-		<div class="m-6 flex flex-col gap-8">
-			<section class="flex flex-col gap-4">
+<BaseLayout title="About | Piling Obrang Vidyo">
+	<div class="m-6 flex flex-col gap-8">
+		<section class="flex flex-col gap-4">
 				<h1 class="text-2xl">About</h1>
 				<div class="grid sm:grid-cols-2 gap-4 w-full">
 					<img
@@ -101,9 +90,9 @@ const teamRoles = [
 					student filmmakers to create their mark - have their voice heard and a
 					chance to exhibit their short films on the big screen. Since then, POV
 					has become a platform to empower the stories of the Filipino youth.
-					<br /><br />In its 22nd year, POV XXXII remains resonant and vivid
-					with the theme <b>Kalampag ng Kulay</b>. This edition positions cinema
-					as a space of disruption, one that refuses to be silent and asserts on
+					<br /><br />In its 22nd year, POV XXII remains resonant and vivid with
+					the theme <b>Kalampag ng Kulay</b>. This edition positions cinema as a
+					space of disruption, one that refuses to be silent and asserts on
 					being felt. Rooted in youth perspectives and emerging voices, the
 					festival highlights how student filmmaking challenges conventions and
 					pushes the boundaries of storytelling. <b>Kulay</b> affirms the many forms
@@ -153,7 +142,5 @@ const teamRoles = [
 					}
 				</div>
 			</section>
-			<Footer />
 		</div>
-	</body>
-</html>
+	</BaseLayout>
