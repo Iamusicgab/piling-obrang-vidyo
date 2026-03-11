@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 // ⚠️ IMPORTANT: Change this to the folder where you save your Markdown files
-const MD_DIR = "./src/pages/festival/pov20/films";
+const MD_DIR = "./src/pages/pov21/films";
 const OUT_DIR = "./public/img";
 
 if (!fs.existsSync(OUT_DIR)) {
