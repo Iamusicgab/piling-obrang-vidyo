@@ -1,9 +1,7 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import NewsTab from "../components/NewsTab.astro";
-import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
 
 interface Frontmatter {
@@ -21,46 +19,9 @@ const newsEntries = Object.values(news).sort((a, b) => {
 });
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="/povwhite.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<!-- Primary Meta Tags -->
-		<title>Piling Obrang Vidyo</title>
-		<meta name="title" content="Piling Obrang Vidyo" />
-		<meta
-			name="description"
-			content="Piling Obrang Vidyo is an annual interschool film festival by UP Cinema."
-		/>
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://pov.upcinema.org/" />
-		<meta property="og:title" content="Piling Obrang Vidyo" />
-		<meta
-			property="og:description"
-			content="Piling Obrang Vidyo is an annual interschool film festival by UP Cinema."
-		/>
-		<meta property="og:image" content="https://pov.upcinema.org/pov.png" />
-
-		<!-- X (Twitter) -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://pov.upcinema.org/" />
-		<meta property="twitter:title" content="Piling Obrang Vidyo" />
-		<meta
-			property="twitter:description"
-			content="Piling Obrang Vidyo is an annual interschool film festival by UP Cinema."
-		/>
-		<meta property="twitter:image" content="https://pov.upcinema.org/pov.png" />
-
-		<!-- Meta Tags Generated with https://metatags.io -->
-	</head>
-	<body class="bg-black text-white font-stack max-w-360 mx-auto">
-		<Analytics />
-		<Navbar />
-		<div class="m-3 md:m-6 flex flex-col gap-8">
+<BaseLayout title="Piling Obrang Vidyo">
+	<Analytics />
+	<div class="m-3 md:m-6 flex flex-col gap-8">
 			<section class="relative flex justify-center">
 				<video
 					class="w-full h-auto aspect-video rounded-xl relative z-0"
@@ -147,8 +108,5 @@ const newsEntries = Object.values(news).sort((a, b) => {
 					</div>
 				</div>
 			</section>
-			<!-- FOOTER -->
-			<Footer />
 		</div>
-	</body>
-</html>
+	</BaseLayout>

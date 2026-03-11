@@ -1,55 +1,10 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import ButtonWhite from "../components/ButtonWhite.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="/povwhite.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<!-- Primary Meta Tags -->
-		<title>POV XXII Submission | Piling Obrang Vidyo</title>
-		<meta name="title" content="POV XXII Submission | Piling Obrang Vidyo" />
-		<meta
-			name="description"
-			content="Piling Obrang Vidyo is now accepting High School and Collegiate short films for it's 22nd edition!"
-		/>
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="/cover.jpg" />
-		<meta
-			property="og:title"
-			content="POV XXII Submission | Piling Obrang Vidyo"
-		/>
-		<meta
-			property="og:description"
-			content="Piling Obrang Vidyo is now accepting High School and Collegiate short films for it's 22nd edition!"
-		/>
-		<meta property="og:image" content="/cover.jpg" />
-
-		<!-- X (Twitter) -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="/cover.jpg" />
-		<meta
-			property="twitter:title"
-			content="POV XXII Submission | Piling Obrang Vidyo"
-		/>
-		<meta
-			property="twitter:description"
-			content="Piling Obrang Vidyo is now accepting High School and Collegiate short films for it's 22nd edition!"
-		/>
-		<meta property="twitter:image" content="/cover.jpg" />
-
-		<!-- Meta Tags Generated with https://metatags.io -->
-	</head>
-	<body class="bg-black text-white font-stack max-w-360 mx-auto">
-		<Navbar />
-		<div class="m-4 md:m-6 flex flex-col gap-8">
+<BaseLayout title="POV XXII Submission | Piling Obrang Vidyo">
+	<div class="m-4 md:m-6 flex flex-col gap-8">
 			<div class="flex flex-col gap-4 group">
 				<h1 class="text-3xl">POV XXII Submissions</h1>
 				<div class="grid md:grid-cols-2 gap-4">
@@ -1065,6 +1020,4 @@ import ButtonWhite from "../components/ButtonWhite.astro";
 				</div>
 			</div>
 		</div>
-		<Footer />
-	</body>
-</html>
+	</BaseLayout>

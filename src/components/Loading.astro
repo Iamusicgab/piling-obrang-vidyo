@@ -1,0 +1,35 @@
+<div
+	id="loading-screen"
+	class="w-screen h-screen bg-black flex items-center justify-center fixed z-50"
+>
+	<span class="loading loading-spinner loading-xl"></span>
+</div>
+
+<script>
+	// Hide loading screen when page is fully loaded
+	if (document.readyState === "loading") {
+		// Document is still loading
+		document.addEventListener("DOMContentLoaded", () => {
+			hideLoadingScreen();
+		});
+	} else {
+		// Document is already loaded
+		hideLoadingScreen();
+	}
+
+	// Also hide on window load to catch all resources
+	window.addEventListener("load", () => {
+		hideLoadingScreen();
+	});
+
+	function hideLoadingScreen() {
+		const loadingScreen = document.getElementById("loading-screen");
+		if (loadingScreen) {
+			loadingScreen.style.opacity = "0";
+			loadingScreen.style.transition = "opacity 0.5s ease-out";
+			setTimeout(() => {
+				loadingScreen.style.display = "none";
+			}, 500);
+		}
+	}
+</script>

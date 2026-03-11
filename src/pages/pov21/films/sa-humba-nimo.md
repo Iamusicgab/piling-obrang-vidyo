@@ -23,21 +23,28 @@ trailer_url: "https://www.youtube.com/watch?v=gLdX4VlAw9o"
 
 filmmaker:
   name: "Allen Joshua Trinidad, Janelle Ruth Samaniego, Earl Holden Bueno, Sophia Christiensen Amihan Asupan"
-  photo: "https://drive.google.com/file/d/18z7KSHhFjoR-Uadum7PEVtmHYVj_XNRl/view?usp=drive_link"
+  photo: "https://drive.google.com/file/d/1QlpuT15JW_rdX6NO2BNSMvmMApe-REUD/view?usp=sharing"
   bio: ""
 
 stills:
-  - "https://drive.google.com/file/d/1KY2X7nqZXt-RIFPpPrwhB_MXWq1MI80e/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1A-yGX_SX8UXJoW75B58MXuJxzLKU1f9J/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1KHfGQbRhnaWM_DrcF6-6fWVL1CDgQvUN/view?usp=drive_link"
-  - "https://drive.google.com/file/d/15M_lcwKBXUt0C2mPjC49Z-trDA4Xei4V/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1NSNd7qKv24Wb6xXyy3sA86kmS06YNoeE/view?usp=drive_link"
+  - https://drive.google.com/file/d/1DVhzGpTuDWJkWCUSmHNBw6XV6S5v9BWu/view?usp=drive_link
+
+  - https://drive.google.com/file/d/1Ob2bMWIZkpOcWjsM0j16WpiifOw4JPXL/view?usp=drive_link
+
+  - https://drive.google.com/file/d/1qpUNlDrjAwv_Rq_4H4zsLzkETvJGYTpI/view?usp=drive_link
+
+  - https://drive.google.com/file/d/1wKRM0pRHi_LCXVkMN780pVW1KC-ZlFfZ/view?usp=drive_link
+
+  - https://drive.google.com/file/d/1_HE1y4ak0cmjfrpCH0_-a5jqw_BkxbZT/view?usp=drive_link
 
 bts:
-  - "https://drive.google.com/file/d/1JZUDlIb2JqQL0dN6mMQuLNbSO36WkqJd/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1_btMbE_4FNZUu3MbWG2pXHNdlYJXZWpW/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1zGEdvDUKmWqBEOZ1HkC5a9VASzgCXhmg/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1vSAiAC0NpYCOY_-MG3T1lMVyMNJrobUa/view?usp=drive_link"
+  - https://drive.google.com/file/d/1E6ugVZ0IdtTUg89vvZ6FiAbRyVLmJYeM/view?usp=drive_link
+
+  - https://drive.google.com/file/d/1auiEgJuupL8jsZtfY8GP6kHkgN5gL_nI/view?usp=drive_link
+
+  - https://drive.google.com/file/d/1iEpmT1v_kOJeZcuQ3eJpCSuzJbInb6xp/view?usp=drive_link
+
+  - https://drive.google.com/file/d/12TOFOxYd3eP5MboZn4xW8z7nSWICjdqK/view?usp=drive_link
 
 crew: |
   Cast:
