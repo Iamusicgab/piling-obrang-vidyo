@@ -1,0 +1,108 @@
+---
+import "../../styles/global.css";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import ShortFilms from "../../components/ShortFilms.astro";
+
+const { frontmatter } = Astro.props;
+
+interface Frontmatter {
+	title: string;
+	stills: string[];
+	link: string;
+}
+
+let embedUrl = "https://www.facebook.com/reel/1682220632316443";
+
+if (embedUrl) {
+	try {
+		const normalized = embedUrl.trim();
+		// YouTube handling
+		if (normalized.includes("youtube.com") || normalized.includes("youtu.be")) {
+			if (normalized.includes("watch?v=")) {
+				const urlObj = new URL(normalized);
+				const videoId = urlObj.searchParams.get("v");
+				embedUrl = `https://www.youtube.com/embed/${videoId}`;
+			} else if (normalized.includes("youtu.be/")) {
+				const urlObj = new URL(normalized);
+				const videoId = urlObj.pathname.substring(1);
+				embedUrl = `https://www.youtube.com/embed/${videoId}`;
+			}
+			// Facebook handling
+		} else if (
+			normalized.includes("facebook.com") ||
+			normalized.includes("fb.watch")
+		) {
+			let videoHref = normalized;
+			if (!videoHref.startsWith("http")) videoHref = "https://" + videoHref;
+			embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoHref)}&show_text=false&width=560`;
+		}
+	} catch (err) {
+		// parsing failed -> leave embedUrl as provided
+	}
+}
+
+// load all markdown film entries for this festival
+const films = import.meta.glob<Frontmatter>("./films/*.md", {
+	eager: true,
+});
+const filmEntries = Object.values(films);
+
+const transformDriveLink = (url: string) => {
+	if (!url) return url;
+
+	// Looks for either "/d/" OR "id=" and grabs the alphanumeric ID
+	const match = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/);
+
+	if (match && match[1]) {
+		// Look at our local public folder!
+		return `/img/${match[1]}.jpg`;
+	}
+
+	return url;
+};
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/povwhite.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>POV XX | Piling Obrang Vidyo</title>
+	</head>
+	<body class="bg-maroon text-white font-stack max-w-360 mx-auto">
+		<Navbar />
+		<div class="m-6 flex flex-col gap-8">
+			<section class="flex flex-col gap-4">
+				<div class="flex flex-col items-center gap-4">
+					<iframe
+						class="w-full aspect-video rounded-lg max-w-4xl mx-auto"
+						src={embedUrl}
+						title="Trailer"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen></iframe>
+					<h1 class="text-2xl">POV XX: Tayo ang Pelikula</h1>
+				</div>
+				<div class="">
+					<span class="text-lg">Short Films</span>
+					<div
+						class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 mx-auto"
+					>
+						{
+							filmEntries.map((film) => (
+								<ShortFilms
+									image={transformDriveLink(film.frontmatter.stills[0])}
+									film={film.frontmatter.title}
+									link={film.url}
+								/>
+							))
+						}
+					</div>
+				</div>
+			</section>
+			<Footer />
+		</div>
+	</body>
+</html>

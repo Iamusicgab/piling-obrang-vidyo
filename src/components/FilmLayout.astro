@@ -21,18 +21,17 @@ if (embedUrl) {
 				const videoId = urlObj.pathname.substring(1);
 				embedUrl = `https://www.youtube.com/embed/${videoId}`;
 			}
-			// Facebook handling: accept e.g. https://www.facebook.com/watch/?v=868346158472787 or /videos/ID/
+			// Facebook handling
 		} else if (
 			normalized.includes("facebook.com") ||
 			normalized.includes("fb.watch")
 		) {
 			let videoHref = normalized;
 			if (!videoHref.startsWith("http")) videoHref = "https://" + videoHref;
-			// Build the Facebook plugin src using the original video URL as the href param
 			embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoHref)}&show_text=false&width=560`;
 		}
 	} catch (err) {
-		// parsing failed -> leave embedUrl as provided; browser may still handle it
+		// parsing failed -> leave embedUrl as provided
 	}
 }
 
@@ -40,26 +39,43 @@ if (embedUrl) {
 const transformDriveLink = (url: string) => {
 	if (!url) return url;
 
-	// Grabs the unique ID right after the "/d/"
-	const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+	// Looks for either "/d/" OR "id=" and grabs the alphanumeric ID
+	const match = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/);
 
 	if (match && match[1]) {
-		// USING THE THUMBNAIL API TRICK:
-		// sz=w1000 sets the max width to 1000px so it stays high quality
-		return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+		// Look at our local public folder!
+		return `/img/${match[1]}.jpg`;
 	}
 
 	return url;
 };
 
-// Transform the stills array
+// Transform the stills and BTS arrays
 const formattedStills = frontmatter.stills
 	? frontmatter.stills.map(transformDriveLink)
 	: [];
 
-// Optional: You can also use this for the poster and filmmaker photo if they are Drive links!
+const formattedBts = frontmatter.bts
+	? frontmatter.bts.map(transformDriveLink)
+	: [];
+
+// Transform poster image
 const posterImage = transformDriveLink(frontmatter.poster_image);
-const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
+
+// --- 3. Filmmaker Photos Normalization ---
+// Get the raw photo field (could be undefined, a string, or an array)
+const rawFilmmakerPhoto = frontmatter.filmmaker?.photo;
+
+// Normalize to an array, transform links, and filter out empty strings
+const filmmakerPhotos = (
+	Array.isArray(rawFilmmakerPhoto)
+		? rawFilmmakerPhoto
+		: rawFilmmakerPhoto
+			? [rawFilmmakerPhoto]
+			: []
+)
+	.map(transformDriveLink)
+	.filter((url) => url !== "");
 ---
 
 <html lang="en">
@@ -79,7 +95,6 @@ const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
 				class="w-full aspect-video rounded-lg max-w-4xl mx-auto"
 				src={embedUrl}
 				title="Trailer"
-				frameborder="0"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin"
 				allowfullscreen></iframe>
@@ -87,7 +102,7 @@ const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
 			<div class="flex gap-4 mx-auto flex-col md:flex-row">
 				<img
 					src={posterImage}
-					class="rounded-lg w-full max-w-72 mx-auto"
+					class="rounded-lg max-w-72 mx-auto object-cover aspect-[9/14]"
 					alt={`${frontmatter.title} Poster`}
 				/>
 				<div class="flex flex-col gap-4">
@@ -98,24 +113,20 @@ const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
 						</p>
 					</div>
 					{
-						() => {
-							if (frontmatter.award) {
-								return <p class="text-yellow font-bold">{frontmatter.award}</p>;
-							}
-						}
+						frontmatter.award && (
+							<p class="text-yellow font-bold">{frontmatter.award}</p>
+						)
 					}
 					<p>
-						{frontmatter.runtime} • {
-							frontmatter.genre.map((g: any) => {
-								return <span>{g} </span>;
-							})
-						}
+						{frontmatter.runtime} | {frontmatter.genre}
 					</p>
 					<p>
-						Logline: {frontmatter.logline}
+						<b>Logline:</b>
+						{frontmatter.logline}
 					</p>
 					<p>
-						Synopsis: {frontmatter.synopsis}
+						<b>Synopsis:</b>
+						{frontmatter.synopsis}
 					</p>
 				</div>
 			</div>
@@ -129,8 +140,26 @@ const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
 						formattedStills.map((stillUrl: string) => (
 							<img
 								src={stillUrl}
-								class="rounded-lg w-full h-auto object-cover aspect-video"
+								class="rounded-lg w-full flex-1 md:max-w-72 h-auto object-cover aspect-video"
 								alt={`Still from ${frontmatter.title}`}
+								loading="lazy"
+							/>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-4">
+				<h1 class="text-2xl">Behind the Scenes</h1>
+				<div
+					class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full max-w-4xl"
+				>
+					{
+						formattedBts.map((btsUrl: string) => (
+							<img
+								src={btsUrl}
+								class="rounded-lg w-full h-auto object-cover aspect-video"
+								alt={`Behind the scenes from ${frontmatter.title}`}
 								loading="lazy"
 							/>
 						))
@@ -141,16 +170,31 @@ const filmmakerPhoto = transformDriveLink(frontmatter.filmmaker.photo);
 			<div class="flex flex-col gap-4">
 				<h1 class="text-2xl">Filmmaker's Profile</h1>
 				<div
-					class="flex flex-col md:flex-row gap-3 items-center md:items-start"
+					class="flex flex-col md:flex-row gap-4 items-center md:items-start"
 				>
-					<img
-						src={frontmatter.filmmaker.photo == ""
-							? "/bg.png"
-							: frontmatter.filmmaker.photo}
-						class="rounded-lg w-full max-w-72 object-cover aspect-square"
-						alt={`Photo of ${frontmatter.filmmaker.name}`}
-					/>
-					<div class="flex flex-col gap-3">
+					{/* Render photos if available, otherwise show fallback */}
+					<div
+						class="flex flex-col flex-wrap justify-center md:justify-start gap-3"
+					>
+						{
+							filmmakerPhotos.length > 0 ? (
+								filmmakerPhotos.map((photoUrl: string) => (
+									<img
+										src={photoUrl}
+										class="rounded-lg w-full max-w-72 object-cover aspect-square"
+										alt={`Photo of ${frontmatter.filmmaker.name}`}
+									/>
+								))
+							) : (
+								<img
+									src="/bg.png"
+									class="rounded-lg w-full max-w-72 object-cover aspect-square"
+									alt={`Photo of ${frontmatter.filmmaker.name}`}
+								/>
+							)
+						}
+					</div>
+					<div class="flex flex-col gap-3 flex-1">
 						<p class="text-2xl">{frontmatter.filmmaker.name}</p>
 						<p>
 							{frontmatter.filmmaker.bio}

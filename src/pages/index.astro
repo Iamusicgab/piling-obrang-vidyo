@@ -3,8 +3,21 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Button from "../components/Button.astro";
 import NewsTab from "../components/NewsTab.astro";
-import Pov22News from "../components/Pov22News.astro";
 import Footer from "../components/Footer.astro";
+
+interface Frontmatter {
+	title: string;
+	date: string;
+	link: string;
+	image: string;
+}
+
+const news = import.meta.glob<Frontmatter>("../pages/news/*.md", {
+	eager: true,
+});
+const newsEntries = Object.values(news).sort((a, b) => {
+	return new Date(b.date) - new Date(a.date);
+});
 ---
 
 <html lang="en">
@@ -17,7 +30,7 @@ import Footer from "../components/Footer.astro";
 	</head>
 	<body class="bg-black text-white font-stack max-w-360 mx-auto">
 		<Navbar />
-		<div class="m-6 flex flex-col gap-8">
+		<div class="m-3 md:m-6 flex flex-col gap-8">
 			<section class="relative flex justify-center">
 				<video
 					class="w-full h-auto aspect-video rounded-xl relative z-0"
@@ -48,42 +61,59 @@ import Footer from "../components/Footer.astro";
 			<section>
 				<div class="flex items-center gap-3">
 					<span class="text-2xl">News</span>
-					<Button url="/news" text="See All" />
+					<!-- <Button url="/news" text="See All" /> -->
 				</div>
 				<div>
 					<div
-						class="grid md:flex-row gap-6 mt-4 justify-center sm:grid-cols-2 md:grid-cols-3"
+						class="grid md:flex-row gap-2 md:gap-6 mt-4 justify-center grid-cols-2 md:grid-cols-3"
 					>
-						<Pov22News />
-						<NewsTab
-							text="Piling Obrang Vidyo 2024 Winners Announced! 2024 Winners Announced!2024 Winners Announced!"
-						/>
-						<NewsTab
-							text="Piling Obrang Vidyo 2024 Winners Announced! 2024 Winners Announced!2024 Winners Announced!"
-						/>
+						{
+							newsEntries.map((news) => {
+								return (
+									<NewsTab
+										text={news.frontmatter.title}
+										link={news.frontmatter.link}
+										image={news.frontmatter.image}
+										date={() => {
+											return new Date(news.frontmatter.date).toLocaleDateString(
+												"en-US",
+												{
+													year: "numeric",
+													month: "long",
+													day: "numeric",
+												},
+											);
+										}}
+									/>
+								);
+							})
+						}
 					</div>
 				</div>
 			</section>
 			<!-- SHORT ABOUT -->
 			<section>
 				<div
-					class="bg-[url('/group.webp')] w-full bg-size-[120%] bg-bottom rounded-lg max-w-4xl p-5 flex flex-col justify-end gap-2 mx-auto relative overflow-hidden"
+					class="bg-[url('/group.webp')] bg-no-repeat w-full bg-cover bg-bottom rounded-lg max-w-4xl p-5 flex flex-col justify-end gap-2 mx-auto relative overflow-hidden"
 				>
 					<!-- dark overlay -->
 					<div
 						class="absolute inset-0 bg-black/70 rounded-lg z-0 pointer-events-none"
 					>
 					</div>
-					<div class="relative z-10 flex flex-col justify-end gap-2 h-full">
-						<p class="md:mt-24">
-							Since 2004, POV has been home for a lot of student filmmakers to
-							declare and claim their voice and space in the field of
-							audio-visual storytelling. Apart from exhibiting their films on
-							the big screen, the works of the finalists would be critiqued and
-							awarded by a roster of esteemed individuals in the Philippine film
-							industry.
-						</p>
-						<Button url="/about" text="Learn More" />
+					<div class="relative z-10 flex flex-col justify-between gap-2 h-full">
+						<h1 class="text-2xl">What is POV?</h1>
+						<div class="flex flex-col gap-2">
+							<p class="md:mt-24">
+								Since 2004, POV has been home for a lot of student filmmakers to
+								declare and claim their voice and space in the field of
+								audio-visual storytelling. Apart from exhibiting their films on
+								the big screen, the works of the finalists would be critiqued
+								and awarded by a roster of esteemed individuals in the
+								Philippine film industry.
+							</p>
+							<Button url="/about" text="Learn More" />
+						</div>
 					</div>
 				</div>
 			</section>

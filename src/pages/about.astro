@@ -1,8 +1,74 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
-
 import Footer from "../components/Footer.astro";
+const teamRoles = [
+	{
+		role: "POV Festival Director",
+		members: [{ name: "Jadrien Morales", img: "/img/team/jadrienmorales.png" }],
+	},
+	{
+		role: "Pelikolektibo Director",
+		members: [{ name: "Reyjie Gabriel Rosique", img: "/bg.png" }],
+	},
+	{
+		role: "Head Secretariats",
+		members: [
+			{ name: "Giancarlo Santiago", img: "/bg.png" },
+			{ name: "Maxine Mangaoang", img: "/bg.png" },
+		],
+	},
+	{
+		role: "Marketing Heads",
+		members: [
+			{ name: "Ralf Montes", img: "/img/team/ralfmontes.png" },
+			{ name: "Eia Arcenal", img: "/img/team/eiaarcenal.png" },
+		],
+	},
+	{
+		role: "Logistics Heads",
+		members: [
+			{ name: "Kio Magno", img: "/bg.png" },
+			{ name: "Hannah Saludades", img: "/img/team/saludades.png" },
+		],
+	},
+	{
+		role: "Programs Heads",
+		members: [
+			{ name: "Seven Fangki", img: "/bg.png" },
+			{ name: "Dustin Laguna", img: "/bg.png" },
+		],
+	},
+	{
+		role: "Selection Heads",
+		members: [
+			{ name: "Julia Francine Malanos", img: "/img/team/malanos.png" },
+			{ name: "Josiah Tollison", img: "/img/team/tollison.png" },
+		],
+	},
+	{
+		role: "Operations Head",
+		members: [{ name: "Gabriel Gonzales", img: "/bg.png" }],
+	},
+	{
+		role: "Creatives Heads",
+		members: [
+			{ name: "Cyrene Navalta", img: "/img/team/navalta.png" },
+			{ name: "Adrian Malasig", img: "/img/team/malasig.png" },
+		],
+	},
+	{
+		role: "Promotions Heads",
+		members: [
+			{ name: "Josef Earl Lalo", img: "/img/team/jourches.png" },
+			{ name: "Juliane Delleopac", img: "/bg.png" },
+		],
+	},
+	{
+		role: "Finance Head",
+		members: [{ name: "Anica Tiu", img: "/img/team/anicatiu.png" }],
+	},
+];
 ---
 
 <html lang="en">
@@ -18,24 +84,72 @@ import Footer from "../components/Footer.astro";
 		<div class="m-6 flex flex-col gap-8">
 			<section class="flex flex-col gap-4">
 				<h1 class="text-2xl">About</h1>
-				<img src="/group.webp" class="rounded-lg w-full max-w-3xl mx-auto" />
-				<p></p>
-				Piling Obrang Vidyo is an event organized by the members of UP Cinema.
-				<br /><br />Since 2004, POV has been home for a lot of student
-				filmmakers to declare and claim their voice and space in the field of
-				audio-visual storytelling. Apart from exhibiting their films on the big
-				screen, the works of the finalists would be critiqued and awarded by a
-				roster of esteemed individuals in the Philippine film industry.<br /><br
-				/>For its 19th year, POV is now bigger than ever as it turns into a
-				hybrid event. With the easing of pandemic-related restrictions, POV XIX
-				is bringing the annual film festival competition back home, at UPFI Film
-				Center's Cine Adarna. Along with the onground screening, POV XIX will
-				also stream the finalist short films online for free. For the first time
-				ever, POV will also be opening its doors not only to college students,
-				but also to senior high school students to further amplify the voice of
-				the youth. Bringing back the genres of narrative, experimental, and
-				documentary, POV XIX hopes to widen the people's appreciation for
-				different kinds of filmmaking.
+				<div class="grid sm:grid-cols-2 gap-4 w-full">
+					<img
+						src="/img/grouppic.png"
+						class="rounded-lg aspect-video object-cover"
+					/>
+					<img
+						src="/img/pov2.JPG"
+						class="rounded-lg aspect-video object-cover"
+					/>
+				</div>
+				<p>
+					Since 2004, Piling Obrang Vidyo (POV) has been a space for a lot of
+					student filmmakers to create their mark - have their voice heard and a
+					chance to exhibit their short films on the big screen. Since then, POV
+					has become a platform to empower the stories of the Filipino youth.
+					<br /><br />In its 22nd year, POV XXXII remains resonant and vivid
+					with the theme <b>Kalampag ng Kulay</b>. This edition positions cinema
+					as a space of disruption, one that refuses to be silent and asserts on
+					being felt. Rooted in youth perspectives and emerging voices, the
+					festival highlights how student filmmaking challenges conventions and
+					pushes the boundaries of storytelling. <b>Kulay</b> affirms the many forms
+					cinema can take, celebrating expression, emotion, and the hues of visual
+					storytelling. <b>Kalampag</b> speaks to cinema’s loudness and its power
+					to unsettle and disrupt. Together, when sound and image collide, they create
+					an impact that shakes the world within and beyond the screen.
+					<br /><br />This year, POV will also hold <b>PeliKolektibo</b>, a
+					program for budding high school film critics of any medium where they
+					get to undergo a series of workshops, consultations, and critique
+					sessions.<br /><br />In a time when colors of truth are being bleached
+					from the public, when the machinery of power works to mute every
+					dissenting hue into a uniform and obedient grey, filmmakers do not
+					have the luxury of neutrality. Filmmakers are here to stain, to bleed
+					color into every crack of a world that demands their silence. Kalampag
+					ng Kulay is a provocation. It is the insistence that cinema must be
+					loud, must be chromatic in its rage, must refuse the comfortable
+					greyness of complicity.
+				</p>
+				<div>
+					<h1 class="text-2xl">The Team</h1>
+				</div>
+
+				<div class="flex flex-wrap gap-8 md:gap-24 justify-center">
+					{
+						teamRoles.map((team) => (
+							<div class="flex flex-col items-center w-fit gap-1">
+								<div class="flex gap-3">
+									{team.members.map((member) => (
+										<div class="flex flex-col items-center w-full max-w-64 gap-2">
+											<img
+												src={member.img}
+												class="aspect-square object-cover rounded-lg"
+												alt={member.name}
+											/>
+
+											<span class="text-center text-lg">{member.name}</span>
+										</div>
+									))}
+								</div>
+								<div class="w-full h-[2px] bg-white" />
+								<div class="flex flex-col items-center">
+									<span class="text-sm">{team.role}</span>
+								</div>
+							</div>
+						))
+					}
+				</div>
 			</section>
 			<Footer />
 		</div>
