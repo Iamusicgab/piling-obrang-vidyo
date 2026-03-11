@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import NewsTab from "../components/NewsTab.astro";
-import Analytics from "@vercel/analytics/astro";
 
 interface Frontmatter {
 	title: string;
@@ -20,93 +19,92 @@ const newsEntries = Object.values(news).sort((a, b) => {
 ---
 
 <BaseLayout title="Piling Obrang Vidyo">
-	<Analytics />
 	<div class="m-3 md:m-6 flex flex-col gap-8">
-			<section class="relative flex justify-center">
-				<video
-					class="w-full h-auto aspect-video rounded-xl relative z-0"
-					autoplay
-					loop
-					muted
-					playsinline
-				>
-					<source src="/trailer.webm" type="video/webm" />
-					Your browser does not support the video tag.
-				</video>
+		<section class="relative flex justify-center">
+			<video
+				class="w-full h-auto aspect-video rounded-xl relative z-0"
+				autoplay
+				loop
+				muted
+				playsinline
+			>
+				<source src="/trailer.webm" type="video/webm" />
+				Your browser does not support the video tag.
+			</video>
+			<div
+				class="absolute inset-0 bg-black/50 rounded-xl z-10 pointer-events-none m-auto"
+			>
+			</div>
+			<h1 class="absolute inset-0 flex items-center justify-center z-20">
+				<div class="flex flex-col items-center text-center px-4">
+					<span class="text-4xl">Piling Obrang Vidyo</span>
+					<span class="text-base">
+						is an annual interschool film festival by <span class="text-red"
+							>UP Cinema.</span
+						>
+					</span>
+				</div>
+			</h1>
+		</section>
+		<!-- NEWS SECTION -->
+		<section>
+			<div class="flex items-center gap-3">
+				<span class="text-2xl">News</span>
+				<!-- <Button url="/news" text="See All" /> -->
+			</div>
+			<div>
 				<div
-					class="absolute inset-0 bg-black/50 rounded-xl z-10 pointer-events-none m-auto"
+					class="grid md:flex-row gap-2 md:gap-6 mt-4 justify-center grid-cols-2 md:grid-cols-3"
 				>
+					{
+						newsEntries.map((news) => {
+							return (
+								<NewsTab
+									text={news.frontmatter.title}
+									link={news.frontmatter.link}
+									image={news.frontmatter.image}
+									date={() => {
+										return new Date(news.frontmatter.date).toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											},
+										);
+									}}
+								/>
+							);
+						})
+					}
 				</div>
-				<h1 class="absolute inset-0 flex items-center justify-center z-20">
-					<div class="flex flex-col items-center text-center px-4">
-						<span class="text-4xl">Piling Obrang Vidyo</span>
-						<span class="text-base">
-							is an annual interschool film festival by <span class="text-red"
-								>UP Cinema.</span
-							>
-						</span>
-					</div>
-				</h1>
-			</section>
-			<!-- NEWS SECTION -->
-			<section>
-				<div class="flex items-center gap-3">
-					<span class="text-2xl">News</span>
-					<!-- <Button url="/news" text="See All" /> -->
-				</div>
-				<div>
-					<div
-						class="grid md:flex-row gap-2 md:gap-6 mt-4 justify-center grid-cols-2 md:grid-cols-3"
-					>
-						{
-							newsEntries.map((news) => {
-								return (
-									<NewsTab
-										text={news.frontmatter.title}
-										link={news.frontmatter.link}
-										image={news.frontmatter.image}
-										date={() => {
-											return new Date(news.frontmatter.date).toLocaleDateString(
-												"en-US",
-												{
-													year: "numeric",
-													month: "long",
-													day: "numeric",
-												},
-											);
-										}}
-									/>
-								);
-							})
-						}
-					</div>
-				</div>
-			</section>
-			<!-- SHORT ABOUT -->
-			<section>
+			</div>
+		</section>
+		<!-- SHORT ABOUT -->
+		<section>
+			<div
+				class="bg-[url('/group.webp')] bg-no-repeat w-full bg-cover bg-bottom rounded-lg max-w-4xl p-5 flex flex-col justify-end gap-2 mx-auto relative overflow-hidden"
+			>
+				<!-- dark overlay -->
 				<div
-					class="bg-[url('/group.webp')] bg-no-repeat w-full bg-cover bg-bottom rounded-lg max-w-4xl p-5 flex flex-col justify-end gap-2 mx-auto relative overflow-hidden"
+					class="absolute inset-0 bg-black/70 rounded-lg z-0 pointer-events-none"
 				>
-					<!-- dark overlay -->
-					<div
-						class="absolute inset-0 bg-black/70 rounded-lg z-0 pointer-events-none"
-					>
-					</div>
-					<div class="relative z-10 flex flex-col justify-between gap-2 h-full">
-						<h1 class="text-2xl">What is POV?</h1>
-						<div class="flex flex-col gap-2">
-							<p class="md:mt-24">
-								Since 2004, POV has been home for a lot of student filmmakers to
-								declare and claim their voice and space in the field of
-								audio-visual storytelling. Apart from exhibiting their films on
-								the big screen, the works of the finalists would be critiqued
-								and awarded by a roster of esteemed individuals in the
-								Philippine film industry.
-							</p>
-							<Button url="/about" text="Learn More" />
-						</div>
+				</div>
+				<div class="relative z-10 flex flex-col justify-between gap-2 h-full">
+					<h1 class="text-2xl">What is POV?</h1>
+					<div class="flex flex-col gap-2">
+						<p class="md:mt-24">
+							Since 2004, POV has been home for a lot of student filmmakers to
+							declare and claim their voice and space in the field of
+							audio-visual storytelling. Apart from exhibiting their films on
+							the big screen, the works of the finalists would be critiqued and
+							awarded by a roster of esteemed individuals in the Philippine film
+							industry.
+						</p>
+						<Button url="/about" text="Learn More" />
 					</div>
 				</div>
-			</section>
-		</div>
-	</BaseLayout>
+			</div>
+		</section>
+	</div>
+</BaseLayout>

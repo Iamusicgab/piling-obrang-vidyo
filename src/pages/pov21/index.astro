@@ -63,33 +63,33 @@ const transformDriveLink = (url: string) => {
 
 <BaseLayout title="POV XXI | Piling Obrang Vidyo">
 	<div class="m-6 flex flex-col gap-8">
-			<section class="flex flex-col gap-4">
-				<div class="flex flex-col items-center gap-4">
-					<iframe
-						class="w-full aspect-video rounded-lg max-w-4xl mx-auto"
-						src={embedUrl}
-						title="Trailer"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen></iframe>
-					<h1 class="text-2xl">POV XXI: Pulso</h1>
+		<section class="flex flex-col gap-4">
+			<div class="flex flex-col items-center gap-4">
+				<iframe
+					class="w-full aspect-video rounded-lg max-w-4xl mx-auto"
+					src={embedUrl}
+					title="Trailer"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen></iframe>
+				<h1 class="text-2xl">POV XXI: Pulso</h1>
+			</div>
+			<div class="">
+				<span class="text-lg">Short Films</span>
+				<div
+					class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 mx-auto"
+				>
+					{
+						filmEntries.map((film) => (
+							<ShortFilms
+								image={transformDriveLink(film.frontmatter.stills[0])}
+								film={film.frontmatter.title}
+								link={film.url}
+							/>
+						))
+					}
 				</div>
-				<div class="">
-					<span class="text-lg">Short Films</span>
-					<div
-						class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 mx-auto"
-					>
-						{
-							filmEntries.map((film) => (
-								<ShortFilms
-									image={transformDriveLink(film.frontmatter.stills[0])}
-									film={film.frontmatter.title}
-									link={film.url}
-								/>
-							))
-						}
-					</div>
-				</div>
+			</div>
 		</section>
 	</div>
 </BaseLayout>

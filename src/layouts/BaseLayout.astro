@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Loading from "../components/Loading.astro";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
 	title?: string;
@@ -20,6 +21,7 @@ const { title = "Piling Obrang Vidyo" } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="bg-black text-white font-stack max-w-360 mx-auto">
+		<Analytics />
 		<Loading />
 		<Navbar />
 		<slot />

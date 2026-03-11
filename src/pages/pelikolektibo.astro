@@ -5,138 +5,136 @@ import Button from "../components/Button.astro";
 
 <BaseLayout title="Pelikolektibo | Piling Obrang Vidyo">
 	<div class="m-6 flex flex-col gap-8">
-			<section class="flex flex-col gap-4">
-				<img class="w-full max-w-72 mx-auto" src="/img/pelikolektibo.png" />
-				<div class="flex flex-col gap-2">
-					<h1 class="text-2xl">PELIKOLEKTIBO</h1>
-					<p>
-						Inspired by Alexis Tioseco’s dying wish for films to be taught in
-						high schools, UP Cinema established Pelikolektibo. We’re honored to
-						host aspiring and promising high school film critics that will be
-						part of this growing march towards accessible and local film
-						scholarship. <br /><br />Pelikolektibo is an initiative of the
-						organization’s members who wish to bring filmmaking and film
-						scholarship to younger artists; we aim to empower the collective and
-						make way for the alternative. Pelikolektibo is for budding high
-						school film critics of any medium (podcast, video essay, written,
-						etc.) where they get to undergo a series of workshops,
-						consultations, and critique sessions. As part of their workshop,
-						they will be selecting a film(s) from the official POV entries to be
-						awarded as the Critics Choice Award.
-					</p>
+		<section class="flex flex-col gap-4">
+			<img class="w-full max-w-72 mx-auto" src="/img/pelikolektibo.png" />
+			<div class="flex flex-col gap-2">
+				<h1 class="text-2xl">PELIKOLEKTIBO</h1>
+				<p>
+					Inspired by Alexis Tioseco’s dying wish for films to be taught in high
+					schools, UP Cinema established Pelikolektibo. We’re honored to host
+					aspiring and promising high school film critics that will be part of
+					this growing march towards accessible and local film scholarship. <br
+					/><br />Pelikolektibo is an initiative of the organization’s members
+					who wish to bring filmmaking and film scholarship to younger artists;
+					we aim to empower the collective and make way for the alternative.
+					Pelikolektibo is for budding high school film critics of any medium
+					(podcast, video essay, written, etc.) where they get to undergo a
+					series of workshops, consultations, and critique sessions. As part of
+					their workshop, they will be selecting a film(s) from the official POV
+					entries to be awarded as the Critics Choice Award.
+				</p>
+			</div>
+			<Button text="Apply Here" url="https://forms.gle/fNMSucyrM9fggukK7" />
+			<div
+				id="pelikolektibo-guidelines"
+				class="border-2 rounded-xl border-red scroll-m-40"
+			>
+				<h1 class="bg-red text-white text-3xl p-4 uppercase rounded-t-lg">
+					Pelikolektibo Guidelines
+				</h1>
+				<div class="flex flex-col gap-6 p-5">
+					<ul class="space-y-6">
+						<li>
+							<strong class="text-xl font-normal">Eligibility</strong>
+							<ol
+								class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+							>
+								<li>
+									The film camp is open to current Grades 9-12 students of any
+									high school in the Philippines within the application period.
+								</li>
+								<li>
+									Aspiring critics of different media are accepted (eg. podcast,
+									video essay, written, etc.)
+								</li>
+								<li>The applicant must be an individual person.</li>
+								<li>
+									The interested applicant may be someone who is transitioning
+									to or exploring other forms. For instance, a writer who wants
+									to try doing a podcast but whose portfolio is limited to
+									written works only.
+								</li>
+							</ol>
+						</li>
+
+						<li>
+							<strong class="text-xl font-normal">Submissions</strong>
+							<ol
+								class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+							>
+								<li>
+									Prepare the following requirements:
+									<ul class="list-disc list-inside pl-6 mt-1 space-y-1">
+										<li>Letter of Intent</li>
+										<li>
+											Portfolio of Sample Work/s (eg. written, podcast, video,
+											etc.)
+										</li>
+									</ul>
+								</li>
+								<li>
+									Alongside their Letter of Intent and Portfolio of Sample
+									Works, applicants must answer a question in the form (250
+									words max).
+								</li>
+								<li>There will be no entry fee.</li>
+								<li>
+									UP Cinema will not be responsible for any legal complaints as
+									a result of the filmmaker’s use of music and other copyrighted
+									works on the materials.
+								</li>
+							</ol>
+						</li>
+
+						<li>
+							<strong class="text-xl font-normal">Selection</strong>
+							<ol
+								class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+							>
+								<li>
+									A selection committee composed of members of UP Cinema will
+									choose the participants.
+								</li>
+								<li>
+									Ten (10) individuals are chosen to participate. However, the
+									selection committee reserves the right to accept more or less
+									than the allotted slots.
+								</li>
+								<li>The decision of the selection committee is final.</li>
+							</ol>
+						</li>
+
+						<li>
+							<strong class="text-xl font-normal">Awards & Prizes</strong>
+							<ol
+								class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
+							>
+								<li>
+									Chosen individuals will undergo intensive sessions on film
+									writing and criticism. They will receive suggestions,
+									insights, and guidance from the pool of mentors.
+								</li>
+								<li>The sessions will be held from May 2026.</li>
+								<li>
+									Participants will choose the recipient of the Critics Choice
+									Award.
+								</li>
+								<li>
+									Certificates will be issued individually to the participant.
+									This will be given upon completion of the program.
+								</li>
+							</ol>
+						</li>
+
+						<li>
+							<strong class="text-xl font-normal">Deadline</strong>
+							<p class="pl-4 mt-2 text-gray-200">
+								The deadline for submission of entries is on April 10, 2026.
+							</p>
+						</li>
+					</ul>
 				</div>
-				<Button text="Apply Here" url="https://forms.gle/fNMSucyrM9fggukK7" />
-				<div
-					id="pelikolektibo-guidelines"
-					class="border-2 rounded-xl border-red scroll-m-40"
-				>
-					<h1 class="bg-red text-white text-3xl p-4 uppercase rounded-t-lg">
-						Pelikolektibo Guidelines
-					</h1>
-					<div class="flex flex-col gap-6 p-5">
-						<ul class="space-y-6">
-							<li>
-								<strong class="text-xl font-normal">Eligibility</strong>
-								<ol
-									class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
-								>
-									<li>
-										The film camp is open to current Grades 9-12 students of any
-										high school in the Philippines within the application
-										period.
-									</li>
-									<li>
-										Aspiring critics of different media are accepted (eg.
-										podcast, video essay, written, etc.)
-									</li>
-									<li>The applicant must be an individual person.</li>
-									<li>
-										The interested applicant may be someone who is transitioning
-										to or exploring other forms. For instance, a writer who
-										wants to try doing a podcast but whose portfolio is limited
-										to written works only.
-									</li>
-								</ol>
-							</li>
-
-							<li>
-								<strong class="text-xl font-normal">Submissions</strong>
-								<ol
-									class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
-								>
-									<li>
-										Prepare the following requirements:
-										<ul class="list-disc list-inside pl-6 mt-1 space-y-1">
-											<li>Letter of Intent</li>
-											<li>
-												Portfolio of Sample Work/s (eg. written, podcast, video,
-												etc.)
-											</li>
-										</ul>
-									</li>
-									<li>
-										Alongside their Letter of Intent and Portfolio of Sample
-										Works, applicants must answer a question in the form (250
-										words max).
-									</li>
-									<li>There will be no entry fee.</li>
-									<li>
-										UP Cinema will not be responsible for any legal complaints
-										as a result of the filmmaker’s use of music and other
-										copyrighted works on the materials.
-									</li>
-								</ol>
-							</li>
-
-							<li>
-								<strong class="text-xl font-normal">Selection</strong>
-								<ol
-									class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
-								>
-									<li>
-										A selection committee composed of members of UP Cinema will
-										choose the participants.
-									</li>
-									<li>
-										Ten (10) individuals are chosen to participate. However, the
-										selection committee reserves the right to accept more or
-										less than the allotted slots.
-									</li>
-									<li>The decision of the selection committee is final.</li>
-								</ol>
-							</li>
-
-							<li>
-								<strong class="text-xl font-normal">Awards & Prizes</strong>
-								<ol
-									class="list-decimal list-inside pl-4 mt-2 space-y-2 text-gray-200"
-								>
-									<li>
-										Chosen individuals will undergo intensive sessions on film
-										writing and criticism. They will receive suggestions,
-										insights, and guidance from the pool of mentors.
-									</li>
-									<li>The sessions will be held from May 2026.</li>
-									<li>
-										Participants will choose the recipient of the Critics Choice
-										Award.
-									</li>
-									<li>
-										Certificates will be issued individually to the participant.
-										This will be given upon completion of the program.
-									</li>
-								</ol>
-							</li>
-
-							<li>
-								<strong class="text-xl font-normal">Deadline</strong>
-								<p class="pl-4 mt-2 text-gray-200">
-									The deadline for submission of entries is on April 10, 2026.
-								</p>
-							</li>
-						</ul>
-					</div>
-				</div>
+			</div>
 		</section>
 	</div>
 </BaseLayout>
