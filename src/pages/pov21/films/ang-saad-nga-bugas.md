@@ -27,14 +27,14 @@ filmmaker:
   bio: "Mikone Calungsod is a filmmaker currently pursuing AB Digital Film at Mapúa University. He sees film as a powerful medium to inform, inspire, and provoke awareness about pressing issues both locally and globally. Through his work, he aims to educate audiences and spark meaningful conversations by shedding light on untold stories and lived realities. Guided by his personal mantra, “I am created to create, and I’m inspired to inspire,” Mikone is driven by purpose, passion, and a deep commitment to storytelling with impact."
 
 stills:
-  - "https://drive.google.com/file/d/1PFfGpcHwEjfL-rzBq8QVz8yN0O8iLDHf/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1EC5qcyChhHWCGY9Y918HX9MneiBa11G7/view?usp=drive_link"
-  - "https://drive.google.com/file/d/1Eephk4n1glaLD2imHRiOZhMQp5HS54Nw/view?usp=drive_link"
-
-bts:
   - "https://drive.google.com/file/d/17_bwtiJGHj2dtrVNzb29KTFgnjeUgzaf/view?usp=drive_link"
   - "https://drive.google.com/file/d/1WG86xAoA1E9hvSPvlXagelGeUl7aww_J/view?usp=drive_link"
   - "https://drive.google.com/file/d/1Svoi7rIhl4VveKC_wFTcOk3WNUPoQ-y1/view?usp=drive_link"
+
+bts:
+  - "https://drive.google.com/file/d/1PFfGpcHwEjfL-rzBq8QVz8yN0O8iLDHf/view?usp=drive_link"
+  - "https://drive.google.com/file/d/1EC5qcyChhHWCGY9Y918HX9MneiBa11G7/view?usp=drive_link"
+  - "https://drive.google.com/file/d/1Eephk4n1glaLD2imHRiOZhMQp5HS54Nw/view?usp=drive_link"
 
 crew: ""
 ---

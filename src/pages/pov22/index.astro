@@ -13,20 +13,34 @@ interface Frontmatter {
 
 <BaseLayout title="POV 22 | Piling Obrang Vidyo">
 	<div class="m-3 md:m-6 flex flex-col gap-8">
-		<section class="relative flex flex-col justify-center gap-4">
+		<section
+			class="relative flex flex-col justify-center gap-4 max-w-3xl mx-auto"
+		>
 			<img
 				src="/kalampagngkulay.jpg"
 				class="max-w-195 mx-auto w-full aspect-video rounded-xl relative z-0 object-cover"
 			/>
 			<h1 class="flex items-center justify-center z-20">
-				<div class="flex flex-col px-4">
+				<div class="flex flex-col px-4 gap-4">
 					<span class="text-4xl">POV 22: Kalampag ng Kulay</span>
 
-					<span class="text-xl font-bold text-red">
-						Festival Details Coming Soon!</span
+					<span class="text-base text-justify">
+						<b class="text-yellow">POV XXII: Kalampag ng Kulay</b> positions cinema
+						as a space of disruption, one that refuses to be silent and asserts on
+						being felt. Rooted in youth perspectives and emerging voices, the festival
+						highlights how student filmmaking challenges conventions and pushes the
+						boundaries of storytelling.
+						<b class="text-green">Kulay</b> affirms the many forms cinema can take,
+						celebrating expression, emotion, and the hues of visual storytelling.
+						<b class="text-purple">Kalampag</b> speaks to cinema’s loudness and its
+						power to unsettle and disrupt. Together, when sound and image collide,
+						they create an impact that shakes the world within and beyond the screen.</span
 					>
 				</div>
 			</h1>
+			<div class="w-full flex justify-center">
+				<Button text="Submit Here" url="/submit" />
+			</div>
 		</section>
 	</div>
 </BaseLayout>
