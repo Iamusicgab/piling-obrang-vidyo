@@ -17,7 +17,38 @@ const { title = "Piling Obrang Vidyo" } = Astro.props;
 		<link rel="icon" href="/povwhite.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<!-- Primary Meta Tags -->
 		<title>{title}</title>
+		<meta name="title" content={`${title}`} />
+		<meta
+			name="description"
+			content="Piling Obrang Vidyo (POV) is an annual interschool film festival by UP Cinema."
+		/>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://pov.upcinema.org/" />
+		<meta property="og:title" content={`${title}`} />
+		<meta
+			property="og:description"
+			content="Piling Obrang Vidyo (POV) is an annual interschool film festival by UP Cinema."
+		/>
+		<meta property="og:image" content="https://pov.upcinema.org/cover.png" />
+
+		<!-- X (Twitter) -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="http://pov.upcinema.org/" />
+		<meta property="twitter:title" content={`${title}`} />
+		<meta
+			property="twitter:description"
+			content="Piling Obrang Vidyo (POV) is an annual interschool film festival by UP Cinema."
+		/>
+		<meta
+			property="twitter:image"
+			content="https://pov.upcinema.org/cover.png"
+		/>
+
+		<!-- Meta Tags Generated with https://metatags.io -->
 	</head>
 	<body class="bg-black text-white font-stack max-w-360 mx-auto">
 		<Loading />
