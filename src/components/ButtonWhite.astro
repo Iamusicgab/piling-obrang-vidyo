@@ -1,8 +1,11 @@
 ---
-const { url, text } = Astro.props;
+const { url, text, disabled } = Astro.props;
 ---
 
-<a href={url} class="self-start inline-block">
+<a
+	href={url}
+	class={`self-start inline-block ${disabled ? "pointer-events-none opacity-50" : ""}`}
+>
 	<span
 		class="bg-white text-black p-2 rounded-sm transition hover:bg-black hover:text-white active:bg-white active:text-black inline-block max-w-full"
 		>{text}</span
