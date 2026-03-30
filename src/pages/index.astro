@@ -10,11 +10,11 @@ interface Frontmatter {
 	image: string;
 }
 
-const news = import.meta.glob<Frontmatter>("../pages/news/*.md", {
-	eager: true,
-});
-const newsEntries = Object.values(news).sort((a, b) => {
-	return new Date(b.date) - new Date(a.date);
+const news = await Astro.glob<Frontmatter>("../pages/news/*.md");
+news.sort((a, b) => {
+	let dateA = new Date(a.frontmatter.date);
+	let dateB = new Date(b.frontmatter.date);
+	return dateB.getTime() - dateA.getTime();
 });
 ---
 
@@ -57,7 +57,7 @@ const newsEntries = Object.values(news).sort((a, b) => {
 					class="grid md:flex-row gap-2 md:gap-6 mt-4 justify-center grid-cols-2 md:grid-cols-3"
 				>
 					{
-						newsEntries.map((news) => {
+						news.map((news) => {
 							return (
 								<NewsTab
 									text={news.frontmatter.title}
