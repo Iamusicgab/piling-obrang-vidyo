@@ -9,21 +9,19 @@ import ButtonWhite from "../components/ButtonWhite.astro";
 			<h1 class="text-3xl">POV XXII Submissions</h1>
 			<div class="grid md:grid-cols-2 gap-4">
 				<div
-					class="relative bg-purple text-white w-fit p-4 rounded-lg flex flex-col gap-2 justify-between overflow-hidden"
+					class="relative bg-purple text-white w-full p-4 rounded-lg flex flex-col gap-2 justify-between overflow-hidden"
 				>
-					<div class="flex flex-col gap-4">
+					<div class="flex flex-col gap-4 w-full">
 						<h1 class="text-2xl mb-6 z-10">High School Category</h1>
-						<p>Deadline: March 24, 2026</p>
-						<p>
-							We are launching a <b>post-production lab</b> for high school filmmakers.
-							We are accepting entries from emerging high school filmmakers to support
-							them in developing their films.
+						<p class="text-red bg-white p-2 rounded-sm">
+							Deadline: Submissions Closed
 						</p>
 					</div>
 					<div>
 						<ButtonWhite
 							url="https://forms.gle/Nva8dTRsMd5ct4S8A"
 							text="Submit Here"
+							disabled="true"
 						/>
 						<ButtonWhite url="#high-school-guidelines" text="Guidelines" />
 					</div>
@@ -35,6 +33,7 @@ import ButtonWhite from "../components/ButtonWhite.astro";
 				>
 					<h1 class="text-2xl mb-6">Collegiate Category</h1>
 					<p>Regular Deadline: March 30, 2026</p>
+					<p>Extended Deadline: April 8, 2026</p>
 					<p>
 						We are accepting film submissions from undergraduate student
 						filmmakers across the Philippines. The Collegiate Category provides
@@ -602,13 +601,12 @@ import ButtonWhite from "../components/ButtonWhite.astro";
 						</ol>
 						<div class="pl-4 mt-4 space-y-2 text-gray-200 text-sm">
 							<p>
-								A standard registration fee of three hundred pesos (Php 300) for
-								collegiate students shall be paid per film entry submission. An
-								extended deadline may be announced at a later date. During the
-								extended registration, four hundred pesos (Php 400) shall be
-								paid.
+								During the regular submission period, a registration fee of
+								three hundred pesos (₱300) per film entry shall be paid by
+								collegiate students. During the extended submission period, a
+								fee of three hundred eighty pesos (₱380) per entry shall apply.
 							</p>
-							<p class="italic">
+							<p class="">
 								*All submitted copies and information for official entries will
 								be the property of UP Cinema. It is the participant's
 								responsibility to keep master copies of their own films.
@@ -927,9 +925,9 @@ import ButtonWhite from "../components/ButtonWhite.astro";
 						</div>
 						<div class="collapse-content text-sm">
 							<p>
-								Submission of entries will be open from <strong
-									>March 09, 2026 until March 30, 2026 at 11:59 PM</strong
-								>.
+								Regular submissions are accepted until March 30, 2026 at 11:59
+								PM. After this, a submission fee of ₱380 will apply. The
+								extended deadline runs until April 8, 2028.
 							</p>
 						</div>
 					</div>
